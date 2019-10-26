@@ -1,0 +1,5 @@
+DELETE http://localhost:8080/hello_servlets_war/books?isbn=21830912830
+Accept: application/json
+Cache-Control: no-cache
+
+###

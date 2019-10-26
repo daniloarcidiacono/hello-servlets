@@ -1,0 +1,17 @@
+PUT http://localhost:8080/hello_servlets_war/books
+Accept: application/json
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+  "isbn": "21830912830",
+  "title": "Design patterns",
+  "year": 1990,
+  "authors": [
+    "Erich Gamma",
+    "Ralph Johnson",
+    "John Vlissides"
+  ]
+}
+
+###
