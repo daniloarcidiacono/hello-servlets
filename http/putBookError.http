@@ -1,0 +1,10 @@
+PUT http://localhost:8080/hello_servlets_war/books
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "isbn": "9780201485370"
+}
+
+###

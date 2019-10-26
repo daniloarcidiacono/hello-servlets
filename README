@@ -1,0 +1,41 @@
+- Install and confiugre JRE 8 or later
+- Download Tomcat 9
+- Set up CATALINA_HOME to bin folder
+- Add %CATALINA_HOME%\bin to %PATH%
+- Setup users in %CATALINA_HOME%\conf\tomcat-users.xml
+  <role rolename="manager-gui" />
+  <user username="root" password="root" roles="manager-gui" />
+
+- Run
+	catalina start
+
+- After startup, the default web applications included with Tomcat will be
+      available by visiting:
+
+      http://localhost:8080/
+
+- To change the port, locate %CATALINA_HOME%\conf\server.xml and
+
+    <Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+
+
+Create a servlet
+https://medium.com/@backslash112/create-maven-project-with-servlet-in-intellij-idea-2018-be0d673bd9af
+
+Warning: the IntelliJ facet puts webapp folder in the wrong path, refer to the following link instead
+	https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html
+
+- web.xml vs WebServlet annotation: https://stackoverflow.com/questions/36939633/tomcat-servlet-mapping-vs-webservlet-annotation
+
+
+Argomenti da trattare:
+
+- Spring Boot 2
+- Initalizr
+- Spring Web (@Controller , @RequestParam..... ecc ecc)
+    https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc
+
+- Spring RestTemplate (Creare un client rest con spring)
+- Spring boot (con magari un piccolo esempio con un controller, service e repository)
