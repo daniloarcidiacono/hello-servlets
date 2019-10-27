@@ -10,9 +10,17 @@
                            http://www.springframework.org/schema/mvc
                            https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+    <context:component-scan base-package="com.objectway.stage.helloservlets"/>
+
     <!-- Enables the Spring MVC @Controller programming model -->
     <!-- mvc:annotation-driven tells DispatcherServlet to look for Controller classes using @Controller annotation. -->
     <mvc:annotation-driven />
 
-    <context:component-scan base-package="com.objectway.stage.helloservlets"/>
+    <beans profile="mysql">
+        <import resource="applicationContext-mysql.xml" />
+    </beans>
+
+    <beans profile="mongodb">
+        <import resource="applicationContext-mongodb.xml" />
+    </beans>
 </beans>

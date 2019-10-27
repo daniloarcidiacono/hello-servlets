@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/tx
+                            http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
+
+    <!-- This is NOT equivalent to java @PropertySource annotation.
+         Infact, this XML tag does NOT inject a PropertySources instance inside Environment, instead instances a
+         PropertySourcesPlaceholderConfigurer, to be used with @Value
+    -->
+    <context:property-placeholder location="/WEB-INF/spring/application-mongodb.properties" />
+
+    <mongo:mongo-client id="mongoClient" host="${mongo.host}" port="${mongo.port}" />
+
+    <mongo:db-factory dbname="${mongo.dbname}" mongo-ref="mongoClient"/>
+
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.data.mongodb.MongoTransactionManager">
+        <property name="dbFactory" ref="mongoDbFactory" />
+    </bean>
+
+    <!-- Enables support for @Transactional -->
+    <tx:annotation-driven />
+
+    <!-- Each Spring Data module includes a repositories element that lets you define a base package that Spring scans for you -->
+    <mongo:repositories base-package="com.objectway.stage.helloservlets.books.persistence.mongo.repository" />
+</beans>

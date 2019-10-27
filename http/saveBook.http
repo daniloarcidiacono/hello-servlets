@@ -5,13 +5,15 @@ Cache-Control: no-cache
 
 {
   "isbn": "21830912830",
-  "title": "Design patterns",
-  "year": 1990,
+  "year": 1995,
+  "title": "Design Patterns",
   "authors": [
     "Erich Gamma",
+    "Richard Helm",
     "Ralph Johnson",
     "John Vlissides"
-  ]
+  ],
+  "link": "https://www.amazon.it/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8"
 }
 
 ###

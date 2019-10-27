@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/tx
+                            http://www.springframework.org/schema/tx/spring-tx.xsd
+                            http://www.springframework.org/schema/data/jpa
+                            http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+    <!-- This is NOT equivalent to java @PropertySource annotation.
+         Infact, this XML tag does NOT inject a PropertySources instance inside Environment, instead instances a
+         PropertySourcesPlaceholderConfigurer, to be used with @Value
+    -->
+    <context:property-placeholder location="/WEB-INF/spring/application-mysql.properties" />
+
+    <bean id="dataSource"
+          class="org.apache.commons.dbcp2.BasicDataSource"
+          p:driverClassName="${jdbc.driverClassName}"
+          p:url="${jdbc.url}"
+          p:username="${jdbc.username}"
+          p:password="${jdbc.password}"
+    />
+
+    <bean id="hibernateJpaVendorAdapter"
+          class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+    />
+
+    <!-- Configure the entity manager factory bean -->
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" />
+
+        <!-- Set JPA properties -->
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.dialect.storage_engine">${hibernate.dialect.storage_engine}</prop>
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+            </props>
+        </property>
+        <property name="packagesToScan" value="com.objectway.stage.helloservlets.books.persistence.mysql.entity" />
+    </bean>
+
+    <!-- Generally speaking, transactions require at least MongoDB 3.7.9 (development build) running in a replica set. Sharded cluster is not supported. -->
+
+    <!-- Configure the transaction manager bean -->
+<!--    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">-->
+<!--        <property name="entityManagerFactory" ref="entityManagerFactory" />-->
+<!--    </bean>-->
+
+    <!-- Enables support for @Transactional -->
+<!--    <tx:annotation-driven />-->
+
+    <!-- Each Spring Data module includes a repositories element that lets you define a base package that Spring scans for you -->
+    <jpa:repositories base-package="com.objectway.stage.helloservlets.books.persistence.mysql.repository" />
+</beans>

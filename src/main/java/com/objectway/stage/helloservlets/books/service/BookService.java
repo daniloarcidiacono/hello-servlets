@@ -17,7 +17,7 @@ public interface BookService {
 	List<Book> getAllBooks();
 
 	/**
-	 * Searches for a book haing the given ISBN code.
+	 * Searches for a book having the given ISBN code.
 	 *
 	 * @param isbn the isbn to search for (cannot be null)
 	 * @return an optional book instance

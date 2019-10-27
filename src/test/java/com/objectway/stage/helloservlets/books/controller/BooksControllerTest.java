@@ -5,7 +5,6 @@ import com.objectway.stage.helloservlets.api.advice.HelloServletsControllerAdvic
 import com.objectway.stage.helloservlets.books.dto.ValidationErrorDTO;
 import com.objectway.stage.helloservlets.books.model.Book;
 import com.objectway.stage.helloservlets.books.service.BookService;
-import com.objectway.stage.helloservlets.test.utils.MatcherUtils;
 import com.objectway.stage.helloservlets.test.utils.ObjectMatcher;
 import com.objectway.stage.helloservlets.utils.Pair;
 import org.junit.After;
@@ -29,7 +28,6 @@ import java.util.List;
 
 import static com.objectway.stage.helloservlets.test.utils.MatcherUtils.asJsonString;
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -55,7 +53,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * can manually instantiate controllers and test them one at a time.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = BooksControllerTest.Config.class) // locations = "classpath:app-context.xml")
+@ContextConfiguration(classes = BooksControllerTest.Config.class)
 @WebAppConfiguration
 public class BooksControllerTest {
 	private static final List<Book> stubBooks = Arrays.asList(

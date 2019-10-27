@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.ServletContext;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +26,11 @@ public class BooksController {
 	@Autowired
 	public BooksController(BookService bookService) {
 		this.bookService = bookService;
+	}
+
+	@GetMapping("throwError")
+	public void throwError() {
+		throw new NullPointerException("This is designed to throw an exception!");
 	}
 
 	@GetMapping
