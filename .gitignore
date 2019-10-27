@@ -9,3 +9,6 @@
 
 # Maven
 target/
+
+# WAR Deployment
+out/
