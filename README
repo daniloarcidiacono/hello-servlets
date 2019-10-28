@@ -30,6 +30,7 @@ Warning: the IntelliJ facet puts webapp folder in the wrong path, refer to the f
 - web.xml vs WebServlet annotation: https://stackoverflow.com/questions/36939633/tomcat-servlet-mapping-vs-webservlet-annotation
 
 
+
 Argomenti da trattare:
 
 - Spring Boot 2
@@ -43,3 +44,7 @@ Argomenti da trattare:
 Links utili:
 
     https://blog.marcnuri.com/field-injection-is-not-recommended/
+    https://thepracticaldeveloper.com/2017/07/31/guide-spring-boot-controller-tests/#Strategy_3_SpringBootTest_with_a_MOCK_WebEnvironment_value
+    https://reflectoring.io/spring-boot-data-jpa-test/
+    https://docs.spring.io/spring-boot/docs/2.1.8.RELEASE/reference/html/executable-jar.html
+    https://www.codejava.net/servers/tomcat/how-to-embed-tomcat-server-into-java-web-applications

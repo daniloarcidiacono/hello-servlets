@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -21,8 +22,29 @@ import java.util.Set;
 
 import static org.junit.Assert.*;
 
+/**
+ * No server deployed, and an ApplicationContext specified by {@link TestConfiguration}.
+ * <p>Only the following beans are loaded:
+ * <ol>
+ *  <li>{@code org.springframework.context.annotation.internalConfigurationAnnotationProcessor}</li>
+ *  <li>{@code org.springframework.context.annotation.internalAutowiredAnnotationProcessor}</li>
+ *  <li>{@code org.springframework.context.annotation.internalCommonAnnotationProcessor}</li>
+ *  <li>{@code org.springframework.context.annotation.internalPersistenceAnnotationProcessor}</li>
+ *  <li>{@code org.springframework.context.event.internalEventListenerProcessor}</li>
+ *  <li>{@code org.springframework.context.event.internalEventListenerFactory}</li>
+ *  <li>{@code mySQLBookServiceTest.Config}</li>
+ *  <li>{@code org.springframework.boot.test.mock.mockito.MockitoPostProcessor$SpyPostProcessor}</li>
+ *  <li>{@code org.springframework.boot.test.mock.mockito.MockitoPostProcessor}</li>
+ *  <li>{@code mySQLBookService}</li>
+ *  <li>{@code com.objectway.stage.helloservlets.books.persistence.mysql.repository.BooksRepository#0}</li>
+ *  <li>{@code com.objectway.stage.helloservlets.books.persistence.mysql.repository.AuthorsRepository#0}</li>
+ * </ol>
+ */
 @RunWith(SpringRunner.class)
 public class MySQLBookServiceTest {
+    @Autowired
+    private ApplicationContext applicationContext;
+
     @TestConfiguration
     static class Config {
         @Bean

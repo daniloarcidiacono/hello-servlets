@@ -7,12 +7,10 @@ import com.objectway.stage.helloservlets.books.service.BookService;
 import com.objectway.stage.helloservlets.test.utils.ObjectMatcher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Profile;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -22,16 +20,11 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * In most of the cases, @WebMvcTest will be limited to bootstrap a single controller.
- * <p>It is used along with @MockBean to provide mock implementations for required dependencies.
- *
- * <p>&#64;WebMvcTest also auto-configures MockMvc which offers a powerful way of easy testing MVC controllers
- * without starting a full HTTP server.
+ * In this case we load a Spring’s {@link WebApplicationContext} but there is no web server deployed.
  */
 @RunWith(SpringRunner.class)
 @WebMvcTest(BooksController.class)

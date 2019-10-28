@@ -13,8 +13,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * This integration tests runs an actual HTTP server.
+ * <p>The whole stack (controller, service and persistence) is tested.
+ */
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT) // It's important to NOT use WebEnvironment.MOCK (the default), otherwise you don’t load a real HTTP server
 @ActiveProfiles("memory")
 public class BooksControllerIntegrationTest {
 //	private static final List<Book> stubBooks = Arrays.asList(
