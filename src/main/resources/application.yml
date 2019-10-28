@@ -1,0 +1,13 @@
+spring:
+  main:
+    banner-mode: 'off'
+
+server:
+  port: 3200
+
+error:
+  reporting:
+    includeStackTrace: true
+
+
+
