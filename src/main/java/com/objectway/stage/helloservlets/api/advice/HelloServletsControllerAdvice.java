@@ -3,7 +3,6 @@ package com.objectway.stage.helloservlets.api.advice;
 import com.objectway.stage.helloservlets.books.dto.ErrorDTO;
 import com.objectway.stage.helloservlets.books.dto.ValidationErrorDTO;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
