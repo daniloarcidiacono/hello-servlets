@@ -14,7 +14,7 @@
 
         <!-- Third party libraries -->
         <!-- Web support -->
-        <spring-webmvc.version>5.1.8.RELEASE</spring-webmvc.version>
+        <spring-webmvc.version>5.3.18</spring-webmvc.version>
 
         <!-- Json support -->
         <jackson-databind.version>2.10.0</jackson-databind.version>
