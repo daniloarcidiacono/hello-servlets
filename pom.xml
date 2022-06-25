@@ -31,7 +31,7 @@
         <hibernate-core.version>5.4.7.Final</hibernate-core.version>
 
         <!-- MongoDB support -->
-        <spring-data-mongodb.version>2.1.9.RELEASE</spring-data-mongodb.version>
+        <spring-data-mongodb.version>3.3.5</spring-data-mongodb.version>
 
         <!-- Test -->
         <spring-test.version>5.1.8.RELEASE</spring-test.version>
